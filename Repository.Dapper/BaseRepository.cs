@@ -7,12 +7,25 @@ using System.Threading.Tasks;
 
 namespace Repository.Dapper
 {
-    public class BaseRepository
+    public class BaseRepository : IDisposable
     {
         protected IDatabaseHelper _Helper;
         public BaseRepository(IDatabaseHelper databaseHelper)
         {
             _Helper = databaseHelper;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

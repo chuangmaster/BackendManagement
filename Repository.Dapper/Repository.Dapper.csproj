@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,12 +49,19 @@
     <Compile Include="Helpers\DatabaseHelper.cs" />
     <Compile Include="Helpers\Interfaces\IDatabaseHelper.cs" />
     <Compile Include="Interfaces\IApplicationRepository.cs" />
+    <Compile Include="Interfaces\IMemberRepository.cs" />
+    <Compile Include="MemberRepository.cs" />
     <Compile Include="Models\ApplicationModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\MemberRoleRelationModel.cs" />
     <Compile Include="Models\RoleApplicationRelationModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Parameters\MemberAddRptParameter.cs" />
+    <Compile Include="Parameters\MemberUpdateRptParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
