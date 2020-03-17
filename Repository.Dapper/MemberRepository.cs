@@ -101,8 +101,19 @@ namespace Repository.Dapper
             {
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("SELECT * FROM Member WHERE Id = @id");
-                var result = conn.QueryFirst<MemberModel>(sql.ToString(), new { id });
-                return result;
+                sql.AppendLine("SELECT * FROM MemberApplicationDeny WHERE MemberID = @id");
+                sql.AppendLine("SELECT * FROM MemberRoleRelation WHERE MemberID = @id");
+
+                var temp = conn.QueryMultiple(sql.ToString(), new { id });
+                var member = temp.ReadFirstOrDefault<MemberModel>();
+                var applicationDeny = temp.Read<MemberApplicationDenyModel>().ToList();
+                var relation = temp.Read<MemberRoleRelationModel>().ToList();
+                if (member != null)
+                {
+                    member.MemberApplicationDeny = applicationDeny;
+                    member.MemberRoleRelation = relation;
+                }
+                return member;
             }
         }
 
@@ -116,8 +127,19 @@ namespace Repository.Dapper
             {
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("SELECT * FROM Member ");
-                var result = conn.Query<MemberModel>(sql.ToString()).ToList();
-                return result;
+                sql.AppendLine("SELECT * FROM MemberApplicationDeny");
+                sql.AppendLine("SELECT * FROM MemberRoleRelation");
+                var temp = conn.QueryMultiple(sql.ToString());
+
+                var members = temp.Read<MemberModel>().ToList();
+                var applicationDeny = temp.Read<MemberApplicationDenyModel>().ToList();
+                var relation = temp.Read<MemberRoleRelationModel>().ToList();
+                members.ForEach(m =>
+                {
+                    m.MemberApplicationDeny = applicationDeny.FindAll(a => a.MemberID == m.ID);
+                    m.MemberRoleRelation = relation.FindAll(x => x.MemberID == m.ID);
+                });
+                return members;
             }
         }
     }

@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\IRoleRepository.cs" />
     <Compile Include="MemberRepository.cs" />
     <Compile Include="Models\ApplicationModel.cs" />
+    <Compile Include="Models\MemberApplicationDenyModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\MemberRoleRelationModel.cs" />
     <Compile Include="Models\RoleApplicationRelationModel.cs" />

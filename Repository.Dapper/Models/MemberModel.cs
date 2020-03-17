@@ -15,5 +15,9 @@ namespace Repository.Dapper.Models
         public DateTime ModifiedDate { get; set; }
         public bool Approve { get; set; }
         public string Mobile { get; set; }
+
+        public List<MemberApplicationDenyModel> MemberApplicationDeny { get; set; }
+
+        public List<MemberRoleRelationModel> MemberRoleRelation { get; set; }
     }
 }
