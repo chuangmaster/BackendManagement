@@ -50,6 +50,7 @@
     <Compile Include="Helpers\Interfaces\IDatabaseHelper.cs" />
     <Compile Include="Interfaces\IApplicationRepository.cs" />
     <Compile Include="Interfaces\IMemberRepository.cs" />
+    <Compile Include="Interfaces\IRoleRepository.cs" />
     <Compile Include="MemberRepository.cs" />
     <Compile Include="Models\ApplicationModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
@@ -58,7 +59,9 @@
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Parameters\MemberAddRptParameter.cs" />
     <Compile Include="Parameters\MemberUpdateRptParameter.cs" />
+    <Compile Include="Parameters\RoleAddRptParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
