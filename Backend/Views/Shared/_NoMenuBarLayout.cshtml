@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!--bootstrap-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/adminlte.css" rel="stylesheet" />*@
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!--font awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" />
+    <style>
+        .content {
+            background: #f4f6f9;
+            min-height: calc(100vh - calc(3.5rem + 1px));
+        }
+
+        .footer {
+            background: #ffffff;
+            border-top: 1px solid #dee2e6;
+            color: #869099;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class=" wrapper ">
+        <div class="container">
+            @RenderBody()
+        </div>
+        <footer class="footer">
+            <!-- Default to the left -->
+            <strong>Copyright &copy; @DateTime.Now.Year - BackEnd</strong> All rights reserved.
+        </footer>
+    </div>
+
+<!--Jquery-->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<!--bootstrap-->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!--adminlte-->
+<script src="~/Scripts/adminlte.min.js"></script>
+@RenderSection("scripts", required: false)
+</body>
+</html>

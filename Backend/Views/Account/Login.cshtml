@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_NoMenuBarLayout.cshtml";
+}
+
+<div class="mt-5 border">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">SignUp</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+            <div class="card m-5">
+                <div class="card-header">
+                    Login
+                </div>
+                <div class="card-body">
+                    <form action="/" method="post">
+                        <div class="form-group">
+                            <label for="email">Email 帳號</label>
+                            <input type="email" class="form-control" id="email" name="email" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password 密碼</label>
+                            <input type="password" class="form-control" id="password" name="password" value="" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">登入</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab"><div class="card m-5">
+            <div class="card-header">
+                SignUp
+            </div>
+            <div class="card-body">
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <label for="email">Email 帳號</label>
+                        <input type="email" class="form-control" id="email" name="email" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password 密碼</label>
+                        <input type="password" class="form-control" id="password" name="password" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password Again 再輸入一次密碼</label>
+                        <input type="password" class="form-control" id="password" name="password" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Mobile</label>
+                        <input type="text" class="form-control" id="phone" name="phone" value="" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">註冊</button>
+                    </div>
+                </form>
+            </div>
+        </div></div>
+
+    </div>
+</div>
