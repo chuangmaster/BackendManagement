@@ -165,6 +165,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Enums\ApplicationEnum.cs" />
+    <Compile Include="Infrastructure\Process\AccountProcess.cs" />
+    <Compile Include="Models\BaseResultModel.cs" />
+    <Compile Include="Models\Parameters\LoginParameter.cs" />
+    <Compile Include="Models\Parameters\SignUpParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,7 +261,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Infrastructure\Attributes\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
@@ -281,6 +284,12 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repository.Dapper\Repository.Dapper.csproj">
+      <Project>{6059469D-F338-4AF0-BA1E-7DA6FA6CEB80}</Project>
+      <Name>Repository.Dapper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -300,7 +309,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1792</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1792/</IISUrl>
+          <IISUrl>http://localhost:1892/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

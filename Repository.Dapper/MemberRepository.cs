@@ -30,7 +30,7 @@ namespace Repository.Dapper
             {
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("INSERT INTO Member (ID, Account, Password, Name, Enable, DateIn, ModifiedDate, Approve, Mobile) ");
-                sql.AppendLine("VALUES(@ID, @Account, @Password, @Name, @Enable, @DateIn, @ModifiedDate, @Approve, @Mobile)");
+                sql.AppendLine("VALUES(@ID, @Account, pwdencrypt(@Password), @Name, @Enable, @DateIn, @ModifiedDate, @Approve, @Mobile)");
                 var result = conn.Execute(sql.ToString(), parameter);
                 return result == 1;
             }
@@ -116,6 +116,33 @@ namespace Repository.Dapper
                 return member;
             }
         }
+        
+        /// <summary>
+        /// 用account取得Member
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public MemberModel CheckLogin(string account, string password)
+        {
+            using (var conn = new SqlConnection(_Helper.GetConnectionString()))
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("SELECT TOP 1 * FROM Member M WHERE pwdcompare(@Password ,M.Password ) = 1 AND M.Account = @Account");
+
+                var temp = conn.QueryMultiple(sql.ToString(), new { account });
+                var member = temp.ReadFirstOrDefault<MemberModel>();
+                if (member != null)
+                {
+                    var applicationDeny = temp.Read<MemberApplicationDenyModel>().ToList();
+                    var relation = temp.Read<MemberRoleRelationModel>().ToList();
+                    member.MemberApplicationDeny = applicationDeny.FindAll(x => x.MemberID == member.ID);
+                    member.MemberRoleRelation = relation.FindAll(x => x.MemberID == member.ID);
+                }
+                return member;
+            }
+        }
+
 
         /// <summary>
         /// 取得Member
@@ -142,5 +169,6 @@ namespace Repository.Dapper
                 return members;
             }
         }
+
     }
 }

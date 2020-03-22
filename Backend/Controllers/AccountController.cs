@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Backend.Models;
+using Backend.Models.Parameters;
 
 namespace Backend.Controllers
 {
@@ -17,16 +19,37 @@ namespace Backend.Controllers
 
         [HttpPost]
         [Route("~/Login")]
-        public ActionResult DoLogin()
+        public ActionResult DoLogin(LoginParameter parameter)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return ResponseModelStateValidation();
+            }
+            if (true)
+            {
+                return Redirect("home");
+
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         [HttpPost]
-        [Route("~/Sign")]
-        public ActionResult SignUp()
+        [Route("~/Signup")]
+        public ActionResult SignUp(SignUpParameter parameter)
         {
-            return View();
+
+            if (true)
+            {
+                return Redirect("~/Login#signup");
+
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
     }
 }

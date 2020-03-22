@@ -8,7 +8,6 @@ namespace Repository.Dapper.Models
     {
         public Guid ID { get; set; }
         public string Account { get; set; }
-        public byte[] Password { get; set; }
         public string Name { get; set; }
         public bool Enable { get; set; }
         public DateTime DateIn { get; set; }

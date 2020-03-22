@@ -37,5 +37,14 @@ namespace Repository.Dapper.Interfaces
         /// <returns></returns>
         List<MemberModel> Get();
 
+        /// <summary>
+        /// 用account取得Member
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="password"></param>
+        ///
+        /// <returns></returns>
+         MemberModel CheckLogin(string account, string password)
+
     }
 }
