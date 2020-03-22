@@ -44,7 +44,7 @@ namespace Repository.Dapper.Interfaces
         /// <param name="password"></param>
         ///
         /// <returns></returns>
-         MemberModel CheckLogin(string account, string password)
+        MemberModel CheckLogin(string account, string password);
 
     }
 }
