@@ -129,8 +129,10 @@ namespace Repository.Dapper
             {
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("SELECT TOP 1 * FROM Member M WHERE pwdcompare(@Password ,M.Password ) = 1 AND M.Account = @Account");
+                sql.AppendLine("SELECT * FROM MemberApplicationDeny");
+                sql.AppendLine("SELECT * FROM MemberRoleRelation");
 
-                var temp = conn.QueryMultiple(sql.ToString(), new { account });
+                var temp = conn.QueryMultiple(sql.ToString(), new { account, password });
                 var member = temp.ReadFirstOrDefault<MemberModel>();
                 if (member != null)
                 {
