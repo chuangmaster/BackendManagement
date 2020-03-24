@@ -30,7 +30,7 @@ namespace Repository.Dapper
             {
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("INSERT INTO Member (ID, Account, Password, Name, Enable, DateIn, ModifiedDate, Approve, Mobile) ");
-                sql.AppendLine("VALUES(@ID, @Account, pwdencrypt(@Password), @Name, @Enable, @DateIn, @ModifiedDate, @Approve, @Mobile)");
+                sql.AppendLine("VALUES(@ID, @Account, pwdencrypt(@Password), @Name, @Enable, getdate(), getdate(), @Approve, @Mobile)");
                 var result = conn.Execute(sql.ToString(), parameter);
                 return result == 1;
             }

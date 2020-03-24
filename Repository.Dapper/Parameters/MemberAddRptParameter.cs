@@ -11,8 +11,6 @@ namespace Repository.Dapper.Parameters
         public string Password { get; set; }
         public string Name { get; set; }
         public bool Enable { get; set; }
-        public DateTime DateIn { get; set; }
-        public DateTime ModifiedDate { get; set; }
         public bool Approve { get; set; }
         public string Mobile { get; set; }
     }
