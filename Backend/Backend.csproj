@@ -167,8 +167,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Consts\ApplicationConst.cs" />
     <Compile Include="Infrastructure\Enums\ApplicationEnum.cs" />
     <Compile Include="Infrastructure\Process\AccountProcess.cs" />
+    <Compile Include="Infrastructure\Profiles\AccountProfile.cs" />
+    <Compile Include="Infrastructure\Profiles\ApplicationMapper.cs" />
     <Compile Include="Models\BaseResultModel.cs" />
     <Compile Include="Models\Parameters\LoginParameter.cs" />
     <Compile Include="Models\Parameters\SignUpParameter.cs" />

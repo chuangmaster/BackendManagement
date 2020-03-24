@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using Backend.Infrastructure.Consts;
+using Backend.Infrastructure.Process;
 using Backend.Models;
 using Backend.Models.Parameters;
 
@@ -10,6 +13,11 @@ namespace Backend.Controllers
 {
     public class AccountController : BaseController
     {
+        private AccountProcess _AccountProcess;
+        public AccountController()
+        {
+            _AccountProcess = new AccountProcess(_DatabaseHelper);
+        }
         [HttpGet]
         [Route("~/Login")]
         public ActionResult Login()
@@ -25,13 +33,14 @@ namespace Backend.Controllers
             {
                 return ResponseModelStateValidation();
             }
-            if (true)
+            var loginResult = _AccountProcess.DoLogin(parameter);
+            if (loginResult.Result)
             {
                 return Redirect("home");
-
             }
             else
             {
+                TempData[ApplicationConst.MessageKey] = loginResult.Message;
                 return RedirectToAction("Login");
             }
         }
@@ -40,15 +49,22 @@ namespace Backend.Controllers
         [Route("~/Signup")]
         public ActionResult SignUp(SignUpParameter parameter)
         {
-
-            if (true)
+            if (!ModelState.IsValid)
             {
-                return Redirect("~/Login#signup");
+                return ResponseModelStateValidation();
+            }
+            
+            var rptResult = _AccountProcess.DoSignUp(parameter);
 
+            if (rptResult.Result)
+            {
+                TempData[ApplicationConst.MessageKey] = rptResult.Message;
+                return RedirectToAction("Login");
             }
             else
             {
-                return RedirectToAction("Login");
+                TempData[ApplicationConst.MessageKey] = rptResult.Message;
+                return Redirect("~/Login#signup");
             }
         }
     }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Backend.Models
+namespace Backend.Models.Parameters
 {
     public class LoginParameter
     {
