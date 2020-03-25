@@ -167,6 +167,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Attributes\CheckUserAttribute.cs" />
     <Compile Include="Infrastructure\Consts\ApplicationConst.cs" />
     <Compile Include="Infrastructure\Enums\ApplicationEnum.cs" />
     <Compile Include="Infrastructure\Process\AccountProcess.cs" />
@@ -266,7 +267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\Attributes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />

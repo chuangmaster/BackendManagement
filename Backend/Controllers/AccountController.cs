@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using AutoMapper;
 using Backend.Infrastructure.Consts;
 using Backend.Infrastructure.Process;
@@ -22,6 +23,12 @@ namespace Backend.Controllers
         [Route("~/Login")]
         public ActionResult Login()
         {
+            var Identity = HttpContext.User.Identity as FormsIdentity;
+            if (Identity != null)
+            {
+                //已經登入
+                return RedirectToAction("index", "home");
+            }
             return View();
         }
 
