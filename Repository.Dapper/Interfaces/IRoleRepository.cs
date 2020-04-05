@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Repository.Dapper.Models;
+using Repository.Dapper.Parameters;
 
 namespace Repository.Dapper.Interfaces
 {
@@ -14,5 +15,11 @@ namespace Repository.Dapper.Interfaces
         /// </summary>
         /// <returns></returns>
         List<RoleModel> Get();
+        /// <summary>
+        /// 新增 Role
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        bool Create(RoleAddRptParameter parameter);
     }
 }

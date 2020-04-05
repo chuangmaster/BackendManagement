@@ -8,6 +8,7 @@ using Dapper;
 using Repository.Dapper.Helpers.Interfaces;
 using Repository.Dapper.Interfaces;
 using Repository.Dapper.Models;
+using Repository.Dapper.Parameters;
 
 namespace Repository.Dapper
 {
@@ -35,6 +36,22 @@ namespace Repository.Dapper
                 var relations = temp.Read<RoleApplicationRelationModel>().ToList();
                 roles.ForEach(x => { x.Relation = relations.FindAll(y => y.RoleID == x.ID); });
                 return roles;
+            }
+        }
+
+        /// <summary>
+        /// 新增 Role
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public bool Create(RoleAddRptParameter parameter)
+        {
+            using (var conn = new SqlConnection(_Helper.GetConnectionString()))
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("INSERT INTO Role (Name, Description, Enable) VALUES(@Name, @Description, @Enable)");
+                var result = conn.Execute(sql.ToString(), parameter);
+                return result == 1;
             }
         }
     }
